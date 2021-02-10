@@ -17,12 +17,12 @@
         /// <summary>
         /// The string 1.
         /// </summary>
-        private const string String1 = "Mohammed";
+        private const string String1 = "FirstName";
 
         /// <summary>
         /// The string 2.
         /// </summary>
-        private const string String2 = "Hoque";
+        private const string String2 = "LastName";
 
         /// <summary>
         /// The string manipulation.

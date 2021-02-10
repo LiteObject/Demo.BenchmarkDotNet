@@ -80,7 +80,7 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public int GetYearFromSpanWithManualConversion(ReadOnlySpan<char> dateTimeString)
+        /*public int GetYearFromSpanWithManualConversion(ReadOnlySpan<char> dateTimeString)
         {
             var indexOfHyphen = dateTimeString.IndexOf('-');
             var yearAsSpan = dateTimeString.Slice(0, indexOfHyphen);
@@ -93,6 +93,6 @@
             }
 
             return temp;
-        }
+        }*/
     }
 }

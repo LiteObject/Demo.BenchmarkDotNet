@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ namespace Demo.BenchmarkDotNet.Collections
 {
     [MinColumn]
     [MaxColumn]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [RankColumn]
     [MemoryDiagnoser]
     public class ListVsHashSet
     {
@@ -17,7 +20,6 @@ namespace Demo.BenchmarkDotNet.Collections
 
         private readonly IList _list;
         private readonly ISet<int> _set;
-
         private readonly int[] _arr;
 
         public ListVsHashSet()

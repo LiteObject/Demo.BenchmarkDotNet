@@ -63,13 +63,13 @@
             Parser.GetYearFromSubstring(DateTime);
         }
 
-        /// <summary>
+        /*// <summary>
         /// The get year from span with manual conversion.
         /// </summary>
         [Benchmark]
         public void GetYearFromSpanWithManualConversion()
         {
             Parser.GetYearFromSpanWithManualConversion(DateTime);
-        }
+        }*/
     }
 }

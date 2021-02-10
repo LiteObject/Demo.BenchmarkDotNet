@@ -1,9 +1,11 @@
 ﻿using BenchmarkDotNet.Running;
+using CodePerfTesting.DateTimeParser;
 using CodePerfTesting.Misc;
 using Demo.BenchmarkDotNet.Collections;
 using Demo.BenchmarkDotNet.HashFunctions;
 using Demo.BenchmarkDotNet.Misc;
 using System;
+using System.Diagnostics;
 
 namespace Demo.BenchmarkDotNet
 {
@@ -14,22 +16,24 @@ namespace Demo.BenchmarkDotNet
     {
         static void Main(string[] args)
         {
+            var watch = new Stopwatch();
+            watch.Start();
+
             Console.WriteLine($"{nameof(Main)} has started.");
             // var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
 
             // var summary = BenchmarkRunner.Run<NameParserBenchmarks>();            
             // var summary = BenchmarkRunner.Run<DateParserBenchmarks>();
             // var summary = BenchmarkRunner.Run<StringManipulationBenchmarks>();
-
             // var summary = BenchmarkRunner.Run<Md5VsSha256>();
-
             // var summary = BenchmarkRunner.Run<ListVsHashSet>();
 
             var summary = BenchmarkRunner.Run<Sleeps>();
 
             Console.WriteLine(summary);
 
-            Console.WriteLine($"{nameof(Main)} is ending.");
+            watch.Stop();
+            Console.WriteLine($"{nameof(Main)} is ending. Elapsed: {watch.Elapsed}");
             Console.ReadKey();
         }
     }
