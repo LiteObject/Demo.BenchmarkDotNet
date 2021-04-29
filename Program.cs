@@ -46,8 +46,10 @@ namespace Demo.BenchmarkDotNet
             // var summary = BenchmarkRunner.Run<StringManipulationBenchmarks>();
             // var summary = BenchmarkRunner.Run<Md5VsSha256>();
             // var summary = BenchmarkRunner.Run<Sleeps>();
-            var summary = BenchmarkRunner.Run<ListVsHashSet>();
+            // var summary = BenchmarkRunner.Run<ListVsHashSet>();
             // var summary = BenchmarkRunner.Run<CollectionPerf>();
+
+            var summary = BenchmarkRunner.Run<ClosestNumber>();
 
             Console.WriteLine(summary);
 
