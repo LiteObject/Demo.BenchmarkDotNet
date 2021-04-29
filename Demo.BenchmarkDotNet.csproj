@@ -1,12 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<!--  In general, safe code doesn't directly access memory using pointers. 
+			It also doesn't allocate raw memory. It creates managed objects instead. 
 
-  <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
-  </ItemGroup>
+			* In some cases, unsafe code may increase an application's performance by removing array bounds checks.
+			* Unsafe code is required when you call native functions that require pointers.
+			* Using unsafe code introduces security and stability risks.
+			* The code that contains unsafe blocks must be compiled with the AllowUnsafeBlocks compiler option.
+		-->
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<!--	The two main flavors of garbage collection are workstation GC and server GC.
+				The subflavors of garbage collection are background and non-concurrent.
+				
+				Server GC is more performant.
+		-->
+		<ServerGarbageCollection>true</ServerGarbageCollection>
+		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove=".gitattributes" />
+		<None Remove=".gitignore" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
+	</ItemGroup>
 
 </Project>

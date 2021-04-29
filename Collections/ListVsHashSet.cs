@@ -16,7 +16,7 @@ namespace Demo.BenchmarkDotNet.Collections
     public class ListVsHashSet
     {
         private const int N = 1000;
-        private const int LOOKUP = 250;
+        private const int Lookup = 250;
 
         private readonly IList _list;
         private readonly ISet<int> _set;
@@ -36,16 +36,20 @@ namespace Demo.BenchmarkDotNet.Collections
             }
         }
 
-        [Benchmark]
-        public bool ListLookup() => _list.Contains(LOOKUP);
+        // Best
+        [Benchmark(Description = "Set lookup using contains")]
+        public bool SetLookup() => _set.Contains(Lookup);
 
-        [Benchmark]
-        public bool SetLookup() => _set.Contains(LOOKUP);
+        // #2
+        [Benchmark(Description = "List lookup using contains")]
+        public bool ListLookup() => _list.Contains(Lookup);
+        
+        // #3
+        [Benchmark(Description = "Array lookup using find")]
+        public bool ArrFindLookup() => Array.Find(_arr, i => i == Lookup) > 0;
 
-        [Benchmark]
-        public bool ArrFindLookup() => Array.Find(_arr, i => i == LOOKUP) > 0;
-
-        [Benchmark]
-        public bool ArrAnyLookup() => _arr.Any(i => i == LOOKUP);
+        // Worst
+        [Benchmark(Description = "Array lookup using any")]
+        public bool ArrAnyLookup() => _arr.Any(i => i == Lookup);
     }
 }
