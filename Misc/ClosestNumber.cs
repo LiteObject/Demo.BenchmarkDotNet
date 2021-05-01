@@ -20,10 +20,13 @@ namespace Demo.BenchmarkDotNet.Misc
         {
         }
 
-        [Benchmark(Description = "Find closest (to target) from a list of numbers")]
+        [Benchmark(Description = "Find closest without sorting")]
+        public int FindClosestWithoutSorting() => _numbers.Aggregate((x, y) => Math.Abs(x - TargetNumber) < Math.Abs(y - TargetNumber) ? x : y);
+
+        [Benchmark(Description = "Find closest")]
         public int FindClosestWithSorting() => _numbers.OrderBy(item => Math.Abs(TargetNumber - item)).First();
 
-        [Benchmark(Description = "Find closest (to target) from a list of numbers without sorting")]
-        public int FindClosestWithoutSorting() => _numbers.Aggregate((x, y) => Math.Abs(x - TargetNumber) < Math.Abs(y - TargetNumber) ? x : y);
+        [Benchmark(Description = "Find closest without sorting, min")]
+        public int FindClosestWithoutSortingUsingMin() => _numbers.Min(i => (Math.Abs(TargetNumber - i), i)).i;
     }
 }

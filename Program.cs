@@ -38,7 +38,7 @@ namespace Demo.BenchmarkDotNet
             var watch = new Stopwatch();
             watch.Start();
 
-            Console.WriteLine($"{nameof(Main)} has started.");
+            Console.WriteLine($"{nameof(Main)} has started.\n\n");
             // var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
 
             // var summary = BenchmarkRunner.Run<NameParserBenchmarks>();            
@@ -48,13 +48,13 @@ namespace Demo.BenchmarkDotNet
             // var summary = BenchmarkRunner.Run<Sleeps>();
             // var summary = BenchmarkRunner.Run<ListVsHashSet>();
             // var summary = BenchmarkRunner.Run<CollectionPerf>();
+            // var summary = BenchmarkRunner.Run<ClosestNumber>();
 
-            var summary = BenchmarkRunner.Run<ClosestNumber>();
-
+            var summary = BenchmarkRunner.Run<ReverseString>();
             Console.WriteLine(summary);
 
             watch.Stop();
-            Console.WriteLine($"{nameof(Main)} is ending. Elapsed: {watch.Elapsed}");
+            Console.WriteLine($"\n\n{nameof(Main)} is ending. Elapsed: {watch.Elapsed}");
             Console.ReadKey();
         }
     }
