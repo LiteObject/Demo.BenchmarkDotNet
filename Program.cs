@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using Demo.BenchmarkDotNet.LINQ;
 
 namespace Demo.BenchmarkDotNet
 {
@@ -49,8 +50,9 @@ namespace Demo.BenchmarkDotNet
             // var summary = BenchmarkRunner.Run<ListVsHashSet>();
             // var summary = BenchmarkRunner.Run<CollectionPerf>();
             // var summary = BenchmarkRunner.Run<ClosestNumber>();
+            // var summary = BenchmarkRunner.Run<ShortCasting>();
 
-            var summary = BenchmarkRunner.Run<ReverseString>();
+            var summary = BenchmarkRunner.Run<LinqPerf>();
             Console.WriteLine(summary);
 
             watch.Stop();
