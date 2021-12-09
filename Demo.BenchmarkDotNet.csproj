@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<!--  In general, safe code doesn't directly access memory using pointers. 
 			It also doesn't allocate raw memory. It creates managed objects instead. 
 
@@ -27,7 +27,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
+		<PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+		<PackageReference Include="C5" Version="2.5.3" />
 	</ItemGroup>
 
 </Project>

@@ -25,7 +25,9 @@ using System.Threading.Tasks;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using Demo.BenchmarkDotNet.Algo;
 using Demo.BenchmarkDotNet.LINQ;
+using Demo.BenchmarkDotNet.NullChecks;
 
 namespace Demo.BenchmarkDotNet
 {
@@ -51,8 +53,15 @@ namespace Demo.BenchmarkDotNet
             // var summary = BenchmarkRunner.Run<CollectionPerf>();
             // var summary = BenchmarkRunner.Run<ClosestNumber>();
             // var summary = BenchmarkRunner.Run<ShortCasting>();
+            // var summary = BenchmarkRunner.Run<LinqPerf>();
 
-            var summary = BenchmarkRunner.Run<LinqPerf>();
+
+            /* var x = new ArrayVsDynamicArray();
+            x.AddToArray();
+            x.AddToDynamicArray();
+            var summary = BenchmarkRunner.Run<ArrayVsDynamicArray>(); */
+            
+            var summary = BenchmarkRunner.Run<ObjectNullCheck>();
             Console.WriteLine(summary);
 
             watch.Stop();
