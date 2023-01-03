@@ -1,10 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo.BenchmarkDotNet.NullChecks
 {
@@ -16,7 +11,7 @@ namespace Demo.BenchmarkDotNet.NullChecks
     [MaxColumn]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [MemoryDiagnoser]
-    [SimpleJob(targetCount: 50)]
+    [SimpleJob()]
     public class ObjectNullCheck
     {
         private User user;

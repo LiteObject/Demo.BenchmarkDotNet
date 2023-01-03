@@ -55,21 +55,22 @@ namespace Demo.BenchmarkDotNet.Algo
 
             while (queue.Count > 0)
             {
-                var element = queue.Dequeue();
+                int element = queue.Dequeue();
 
-                if(visited.Contains(element))
+                if (visited.Contains(element))
                 {
                     continue;
-                }else
+                }
+                else
                 {
-                    visited.Add(element);
+                    _ = visited.Add(element);
                 }
 
                 List<int> neighbours;
 
-                if(this._tree.TryGetValue(element, out neighbours))
+                if (this._tree.TryGetValue(element, out neighbours))
                 {
-                    
+
                 }
             }
         }

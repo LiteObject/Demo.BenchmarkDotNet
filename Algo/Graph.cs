@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo.BenchmarkDotNet.Algo
 {
@@ -21,13 +18,13 @@ namespace Demo.BenchmarkDotNet.Algo
     public class Graph<T>
     {
         // The keys are the vertices and the value of each vertex is its set of neighbors.
-        public Dictionary<T, HashSet<T>> AdjacencyList { get; } = new ();
+        public Dictionary<T, HashSet<T>> AdjacencyList { get; } = new();
 
         public Graph(IEnumerable<T> vertices)
         {
-            foreach (var vertex in vertices)
+            foreach (T vertex in vertices)
             {
-                AddVertex(vertex);
+                _ = AddVertex(vertex);
             }
         }
 
@@ -38,12 +35,12 @@ namespace Demo.BenchmarkDotNet.Algo
         /// <param name="edges">The edges (aka lines that connect nodes)</param>
         public Graph(T[] vertices, HashSet<T>[] edges)
         {
-            foreach (var vertex in vertices)
+            foreach (T vertex in vertices)
             {
-                AddVertex(vertex);
+                _ = AddVertex(vertex);
             }
-            
-            for (var i =0; i < vertices.Length; i ++)
+
+            for (int i = 0; i < vertices.Length; i++)
             {
                 AddEdge(vertices[i], edges[i]);
             }
@@ -51,7 +48,7 @@ namespace Demo.BenchmarkDotNet.Algo
 
         public bool AddVertex(T vertex)
         {
-            if(AdjacencyList.ContainsKey(vertex))
+            if (AdjacencyList.ContainsKey(vertex))
             {
                 return false;
             }
@@ -62,15 +59,17 @@ namespace Demo.BenchmarkDotNet.Algo
 
         public void AddEdge(T vertex, HashSet<T> neighbors)
         {
+            ArgumentNullException.ThrowIfNull(neighbors, nameof(neighbors));
+
             // If not already there, add
-            AddVertex(vertex);
+            _ = AddVertex(vertex);
 
-            foreach (var neighbor in neighbors)
+            foreach (T neighbor in neighbors)
             {
-                AddVertex(neighbor);
+                _ = AddVertex(neighbor);
 
-                AdjacencyList[vertex].Add(neighbor);
-                AdjacencyList[neighbor].Add(vertex);
+                _ = AdjacencyList[vertex].Add(neighbor);
+                _ = AdjacencyList[neighbor].Add(vertex);
             }
         }
     }

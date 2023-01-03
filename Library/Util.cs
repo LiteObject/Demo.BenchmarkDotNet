@@ -6,6 +6,8 @@ namespace Demo.BenchmarkDotNet.Library
     {
         public static T[] GetACopyOf<T>(T[] arr)
         {
+            ArgumentNullException.ThrowIfNull(arr, nameof(arr));
+
             T[] tempArray = (T[])Array.CreateInstance(typeof(T), arr.Length);
             Array.Copy(arr, tempArray, arr.Length);
             return tempArray;

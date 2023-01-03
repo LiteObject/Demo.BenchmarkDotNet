@@ -8,18 +8,19 @@
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [MemoryDiagnoser]
-    public  class ArrayVsDynamicArray
+    public class ArrayVsDynamicArray
     {
         private const int N = 1000;
         private const int Lookup = 250;
 
         [Benchmark]
-        public void AddToArray() {
+        public void AddToArray()
+        {
 
-            var a = new int[N];
+            int[] a = new int[N];
 
-            for (var i = 0; i < N; i++) 
-            { 
+            for (int i = 0; i < N; i++)
+            {
                 a[i] = i;
             }
         }
@@ -29,7 +30,7 @@
         {
             int[] a = System.Array.Empty<int>();
 
-            for (var i = 0; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 a[i] = i;
             }

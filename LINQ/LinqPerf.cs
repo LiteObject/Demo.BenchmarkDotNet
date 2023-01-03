@@ -3,7 +3,6 @@ using BenchmarkDotNet.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Demo.BenchmarkDotNet.LINQ
 {
@@ -20,7 +19,7 @@ namespace Demo.BenchmarkDotNet.LINQ
         [Benchmark]
         public void SearchUsingAnyWithCurrentOrdinalIgnoreCase()
         {
-            var result = false;
+            bool result = false;
 
             if (stringList.Any(s => s.Equals("one", StringComparison.OrdinalIgnoreCase)))
             {
@@ -31,7 +30,7 @@ namespace Demo.BenchmarkDotNet.LINQ
         [Benchmark]
         public void SearchUsingFirstOrDefaultWithCurrentOrdinalIgnoreCase()
         {
-            var result = stringList.FirstOrDefault(s => s.Equals("one", StringComparison.OrdinalIgnoreCase));
+            string result = stringList.FirstOrDefault(s => s.Equals("one", StringComparison.OrdinalIgnoreCase));
 
             if (result != null)
             {
@@ -41,7 +40,7 @@ namespace Demo.BenchmarkDotNet.LINQ
         [Benchmark]
         public void SearchUsingAnyWithCurrentCultureIgnoreCase()
         {
-            var result = false;
+            bool result = false;
 
             if (stringList.Any(s => s.Equals("one", StringComparison.CurrentCultureIgnoreCase)))
             {
@@ -50,12 +49,12 @@ namespace Demo.BenchmarkDotNet.LINQ
         }
 
         [Benchmark]
-        public void SearchUsingAnyWithToLower() 
+        public void SearchUsingAnyWithToLower()
         {
-            var result = false;
+            bool result = false;
 
-            if (stringList.Any(s => s.ToLower() == "one")) 
-            { 
+            if (stringList.Any(s => s.ToLower() == "one"))
+            {
                 result = true;
             }
         }
