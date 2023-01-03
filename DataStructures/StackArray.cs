@@ -93,7 +93,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         /// <returns>The LIFO enumerator</returns>
         public System.Collections.Generic.IEnumerator<T> GetEnumerator()
         {
-            for (int i = _size-1; i >= 0; i--)
+            for (int i = _size - 1; i >= 0; i--)
             {
                 yield return _items[i];
             }

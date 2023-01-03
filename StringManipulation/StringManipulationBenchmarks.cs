@@ -1,13 +1,7 @@
-﻿namespace CodePerfTesting.Misc
+﻿using BenchmarkDotNet.Attributes;
+
+namespace CodePerfTesting.Misc
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    using BenchmarkDotNet.Attributes;
-
     /// <summary>
     /// The string manipulation benchmarks.
     /// </summary>
@@ -27,7 +21,7 @@
         /// <summary>
         /// The string manipulation.
         /// </summary>
-        private static readonly StringManipulation StringManipulation = new StringManipulation();
+        private static readonly StringManipulation StringManipulation = new();
 
         /// <summary>
         /// The join with string builder.
@@ -35,7 +29,7 @@
         [Benchmark(Baseline = true)]
         public void JoinWithStringBuilder()
         {
-            StringManipulation.JoinWithStringBuilder(String1, String2);
+            _ = StringManipulation.JoinWithStringBuilder(String1, String2);
         }
 
         /// <summary>
@@ -44,7 +38,7 @@
         [Benchmark]
         public void JoinWithStringInterpolation()
         {
-            StringManipulation.JoinWithStringInterpolation(String1, String2);
+            _ = StringManipulation.JoinWithStringInterpolation(String1, String2);
         }
     }
 }

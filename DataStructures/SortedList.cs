@@ -81,7 +81,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
 
         public void Add(T value)
         {
-            if(head == null)
+            if (head == null)
             {
                 // empty list
                 head = new SortedListNode<T>(value);
@@ -90,7 +90,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             else if (head.data.CompareTo(value) >= 0)
             {
                 // adding at head
-                SortedListNode<T> newHead = new SortedListNode<T>(value);
+                SortedListNode<T> newHead = new(value);
                 newHead.next = head;
                 head.prev = newHead;
                 head = newHead;
@@ -98,7 +98,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             else if (tail.data.CompareTo(value) < 0)
             {
                 // adding at tail
-                SortedListNode<T> newtail = new SortedListNode<T>(value);
+                SortedListNode<T> newtail = new(value);
                 newtail.prev = tail;
                 tail.next = newtail;
                 tail = newtail;
@@ -113,7 +113,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
                 }
 
                 // insert the node
-                SortedListNode<T> toInsert = new SortedListNode<T>(value);
+                SortedListNode<T> toInsert = new(value);
                 toInsert.next = insertBefore;
                 toInsert.prev = insertBefore.prev;
                 insertBefore.prev.next = toInsert;
@@ -126,9 +126,9 @@ namespace Demo.BenchmarkDotNet.DataStructures
         private SortedListNode<T> FindNode(T value)
         {
             SortedListNode<T> current = head;
-            while(current != null)
+            while (current != null)
             {
-                if(current.data.Equals(value))
+                if (current.data.Equals(value))
                 {
                     return current;
                 }
@@ -143,7 +143,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public bool Find(T value, out T found)
         {
             SortedListNode<T> node = FindNode(value);
-            if(node != null)
+            if (node != null)
             {
                 found = node.data;
                 return true;
@@ -161,7 +161,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public bool Remove(T value)
         {
             SortedListNode<T> toRemove = FindNode(value);
-            if(toRemove == null)
+            if (toRemove == null)
             {
                 return false;
             }
@@ -169,17 +169,17 @@ namespace Demo.BenchmarkDotNet.DataStructures
             SortedListNode<T> prev = toRemove.prev;
             SortedListNode<T> next = toRemove.next;
 
-            if(prev == null && next == null)
+            if (prev == null && next == null)
             {
                 head = null;
                 tail = null;
             }
-            else if(prev != null && next != null)
+            else if (prev != null && next != null)
             {
                 prev.next = next;
                 next.prev = prev;
             }
-            else if(prev != null && next == null)
+            else if (prev != null && next == null)
             {
                 prev.next = null;
                 tail = prev;

@@ -20,8 +20,8 @@
         /// </returns>
         public string GetLastName(string fullName)
         {
-            var names = fullName.Split(" ");
-            var lastName = names.LastOrDefault();
+            string[] names = fullName.Split(" ");
+            string lastName = names.LastOrDefault();
             return lastName ?? string.Empty;
         }
     }

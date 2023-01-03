@@ -33,7 +33,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
     /// Add, Remove, Find and Enumerate
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class LinkedList<T> : 
+    public class LinkedList<T> :
         System.Collections.Generic.ICollection<T>
     {
 

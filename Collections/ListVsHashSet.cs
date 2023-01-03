@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Demo.BenchmarkDotNet.Collections
 {
@@ -30,26 +29,38 @@ namespace Demo.BenchmarkDotNet.Collections
 
             for (int i = 0; i < N; i++)
             {
-                _list.Add(i);
-                _set.Add(i);
+                _ = _list.Add(i);
+                _ = _set.Add(i);
                 _arr[i] = i;
             }
         }
 
         // Best
         [Benchmark(Description = "Set lookup using contains")]
-        public bool SetLookup() => _set.Contains(Lookup);
+        public bool SetLookup()
+        {
+            return _set.Contains(Lookup);
+        }
 
         // #2
         [Benchmark(Description = "List lookup using contains")]
-        public bool ListLookup() => _list.Contains(Lookup);
-        
+        public bool ListLookup()
+        {
+            return _list.Contains(Lookup);
+        }
+
         // #3
         [Benchmark(Description = "Array lookup using find")]
-        public bool ArrFindLookup() => Array.Find(_arr, i => i == Lookup) > 0;
+        public bool ArrFindLookup()
+        {
+            return Array.Find(_arr, i => i == Lookup) > 0;
+        }
 
         // Worst
         [Benchmark(Description = "Array lookup using any")]
-        public bool ArrAnyLookup() => _arr.Any(i => i == Lookup);
+        public bool ArrAnyLookup()
+        {
+            return _arr.Any(i => i == Lookup);
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
 {
     public class Stack<T>
     {
-        readonly Deque<T> store = new Deque<T>();
+        readonly Deque<T> store = new();
 
         public void Push(T item)
         {

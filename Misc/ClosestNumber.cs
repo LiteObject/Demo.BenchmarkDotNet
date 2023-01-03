@@ -13,7 +13,7 @@ namespace Demo.BenchmarkDotNet.Misc
     public class ClosestNumber
     {
         // IEnumerable -> ICollection -> IList
-        private readonly int[] _numbers = new int[] {10, 20, 30, 40, 50, 60, 70, 80, 90, 52, 54};
+        private readonly int[] _numbers = new int[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 52, 54 };
         private const int TargetNumber = 55;
 
         public ClosestNumber()
@@ -21,12 +21,21 @@ namespace Demo.BenchmarkDotNet.Misc
         }
 
         [Benchmark(Description = "Find closest without sorting")]
-        public int FindClosestWithoutSorting() => _numbers.Aggregate((x, y) => Math.Abs(x - TargetNumber) < Math.Abs(y - TargetNumber) ? x : y);
+        public int FindClosestWithoutSorting()
+        {
+            return _numbers.Aggregate((x, y) => Math.Abs(x - TargetNumber) < Math.Abs(y - TargetNumber) ? x : y);
+        }
 
         [Benchmark(Description = "Find closest")]
-        public int FindClosestWithSorting() => _numbers.OrderBy(item => Math.Abs(TargetNumber - item)).First();
+        public int FindClosestWithSorting()
+        {
+            return _numbers.OrderBy(item => Math.Abs(TargetNumber - item)).First();
+        }
 
         [Benchmark(Description = "Find closest without sorting, min")]
-        public int FindClosestWithoutSortingUsingMin() => _numbers.Min(i => (Math.Abs(TargetNumber - i), i)).i;
+        public int FindClosestWithoutSortingUsingMin()
+        {
+            return _numbers.Min(i => (Math.Abs(TargetNumber - i), i)).i;
+        }
     }
 }

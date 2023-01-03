@@ -6,7 +6,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
 {
     public class Deque<T> : IEnumerable<T>
     {
-        readonly DoublyLinkedList<T> store = new DoublyLinkedList<T>();
+        readonly DoublyLinkedList<T> store = new();
 
         public void EnqueueHead(T value)
         {
@@ -21,7 +21,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public T DequeueHead()
         {
             T value;
-            if(store.GetHead(out value))
+            if (store.GetHead(out value))
             {
                 store.RemoveHead();
                 return value;
@@ -33,7 +33,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public T DequeueTail()
         {
             T value;
-            if(store.GetTail(out value))
+            if (store.GetTail(out value))
             {
                 store.RemoveTail();
                 return value;

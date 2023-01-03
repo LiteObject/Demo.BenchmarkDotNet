@@ -117,18 +117,18 @@ namespace Demo.BenchmarkDotNet.DataStructures
             if (_items != null)
             {
                 HashTableNodePair<TKey, TValue> found = null;
-                foreach(HashTableNodePair<TKey, TValue> current in _items)
+                foreach (HashTableNodePair<TKey, TValue> current in _items)
                 {
-                    if(current.Key.Equals(key))
+                    if (current.Key.Equals(key))
                     {
                         found = current;
                         break;
                     }
                 }
 
-                if(found != null)
+                if (found != null)
                 {
-                    _items.Remove(found);
+                    _ = _items.Remove(found);
                     removed = true;
                 }
             }

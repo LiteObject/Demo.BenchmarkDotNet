@@ -10,7 +10,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
     /// <typeparam name="TValue">The value type of the hash table</typeparam>
     internal class HashTableArray<TKey, TValue>
     {
-        HashTableArrayNode<TKey, TValue>[] _array;
+        private HashTableArrayNode<TKey, TValue>[] _array;
 
         /// <summary>
         /// Constructs a new hash table array with the specified capacity
@@ -73,13 +73,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         /// <summary>
         /// The capacity of the hash table array
         /// </summary>
-        public int Capacity
-        {
-            get
-            {
-                return _array.Length;
-            }
-        }
+        public int Capacity => _array.Length;
 
         /// <summary>
         /// Removes every item from the hash table array
@@ -95,7 +89,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         /// <summary>
         /// Returns an enumerator for all of the values in the node array
         /// </summary>
-        public IEnumerable<TValue> Values 
+        public IEnumerable<TValue> Values
         {
             get
             {

@@ -39,7 +39,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
     /// Add, Remove, Find and Enumerate
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class DoublyLinkedList<T> : 
+    public class DoublyLinkedList<T> :
         System.Collections.Generic.ICollection<T>
     {
         /// <summary>
@@ -95,7 +95,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             {
                 // Before: Head -------> 5 <-> 7 -> null
                 // After:  Head -> 3 <-> 5 <-> 7 -> null
-                
+
                 // temp.Previous was null, now Head
                 temp.Previous = Head;
             }
@@ -125,7 +125,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             else
             {
                 Tail.Next = node;
-                
+
                 // Before: Head -> 3 <-> 5 -> null
                 // After:  Head -> 3 <-> 5 <-> 7 -> null
                 // 7.Previous = 5
@@ -290,7 +290,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             {
                 // we're removing the head node
                 Head = next;
-                if(Head != null)
+                if (Head != null)
                 {
                     Head.Previous = null;
                 }
@@ -300,11 +300,11 @@ namespace Demo.BenchmarkDotNet.DataStructures
                 previous.Next = next;
             }
 
-            if(next == null)
+            if (next == null)
             {
                 // we're removing the tail
                 Tail = previous;
-                if(Tail != null)
+                if (Tail != null)
                 {
                     Tail.Next = null;
                 }
@@ -341,7 +341,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public System.Collections.Generic.IEnumerable<T> GetReverseEnumerator()
         {
             DoublyLinkedListNode<T> current = Tail;
-            while(current != null)
+            while (current != null)
             {
                 yield return current.Value;
                 current = current.Previous;

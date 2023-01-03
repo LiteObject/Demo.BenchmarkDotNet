@@ -4,7 +4,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
 {
     public class Queue<T>
     {
-        readonly Deque<T> store = new Deque<T>();
+        readonly Deque<T> store = new();
 
         public void Enqueue(T value)
         {
@@ -19,7 +19,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public T Peek()
         {
             T value;
-            if(store.PeekHead(out value))
+            if (store.PeekHead(out value))
             {
                 return value;
             }

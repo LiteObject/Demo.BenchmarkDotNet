@@ -1,10 +1,6 @@
 ﻿namespace CodePerfTesting.Misc
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// The string manipulation.
@@ -25,9 +21,9 @@
         /// </returns>
         public string JoinWithStringBuilder(string string1, string string2)
         {
-            var sb = new StringBuilder();
-            sb.Append(string1);
-            sb.Append(string2);
+            StringBuilder sb = new();
+            _ = sb.Append(string1);
+            _ = sb.Append(string2);
 
             return sb.ToString();
         }

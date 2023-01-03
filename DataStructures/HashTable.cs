@@ -62,7 +62,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             if (_count >= _maxItemsAtCurrentSize)
             {
                 // allocate a larger array
-                HashTableArray<TKey, TValue> largerArray = new HashTableArray<TKey, TValue>(_array.Capacity * 2);
+                HashTableArray<TKey, TValue> largerArray = new(_array.Capacity * 2);
 
                 // and re-add each item to the new array
                 foreach (HashTableNodePair<TKey, TValue> node in _array.Items)
@@ -140,8 +140,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         /// <returns>True if the value exists in the hash table, false otherwise.</returns>
         public bool ContainsKey(TKey key)
         {
-            TValue value;
-            return _array.TryGetValue(key, out value);
+            return _array.TryGetValue(key, out _);
         }
 
         /// <summary>

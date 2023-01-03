@@ -1,11 +1,5 @@
 ﻿namespace CodePerfTesting.DateTimeParser
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using BenchmarkDotNet.Attributes;
     using BenchmarkDotNet.Order;
 
@@ -25,7 +19,7 @@
         /// <summary>
         /// The parser.
         /// </summary>
-        private static readonly DateParser Parser = new DateParser();
+        private static readonly DateParser Parser = new();
 
         /// <summary>
         /// This is where we benchmark "GetYearFromDateTime" method.
@@ -33,7 +27,7 @@
         [Benchmark(Baseline = true)]
         public void GetYearFromDateTime()
         {
-            Parser.GetYearFromDateTime(DateTime);
+            _ = Parser.GetYearFromDateTime(DateTime);
         }
 
         /// <summary>
@@ -42,7 +36,7 @@
         [Benchmark]
         public void GetYearFromSplit()
         {
-            Parser.GetYearFromSplit(DateTime);
+            _ = Parser.GetYearFromSplit(DateTime);
         }
 
         /// <summary>
@@ -51,7 +45,7 @@
         [Benchmark]
         public void GetYearFromSubstring()
         {
-            Parser.GetYearFromSubstring(DateTime);
+            _ = Parser.GetYearFromSubstring(DateTime);
         }
 
         /// <summary>
@@ -60,7 +54,7 @@
         [Benchmark]
         public void GetYearFromSpan()
         {
-            Parser.GetYearFromSubstring(DateTime);
+            _ = Parser.GetYearFromSubstring(DateTime);
         }
 
         /*// <summary>

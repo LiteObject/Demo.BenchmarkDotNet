@@ -1,11 +1,5 @@
 ﻿namespace CodePerfTesting
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using BenchmarkDotNet.Attributes;
 
     /// <summary>
@@ -22,7 +16,7 @@
         /// <summary>
         /// The parser.
         /// </summary>
-        private static readonly NameParser Parser = new NameParser();
+        private static readonly NameParser Parser = new();
 
         /// <summary>
         /// The get last name.
@@ -30,7 +24,7 @@
         [Benchmark(Baseline = true)]
         public void GetLastName()
         {
-            Parser.GetLastName(FullName);
+            _ = Parser.GetLastName(FullName);
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿namespace CodePerfTesting.DateTimeParser
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// The date parser.
@@ -22,7 +18,7 @@
         /// </returns>
         public int GetYearFromDateTime(string dateTimeString)
         {
-            var dateTime = DateTime.Parse(dateTimeString);
+            DateTime dateTime = DateTime.Parse(dateTimeString);
             return dateTime.Year;
         }
 
@@ -37,7 +33,7 @@
         /// </returns>
         public int GetYearFromSplit(string dateTimeString)
         {
-            var splitOnHyphen = dateTimeString.Split('-');
+            string[] splitOnHyphen = dateTimeString.Split('-');
             return int.Parse(splitOnHyphen[0]);
         }
 
@@ -52,7 +48,7 @@
         /// </returns>
         public int GetYearFromSubstring(string dateTimeString)
         {
-            var indexOfHyphen = dateTimeString.IndexOf('-');
+            int indexOfHyphen = dateTimeString.IndexOf('-');
             return int.Parse(dateTimeString.Substring(0, indexOfHyphen));
         }
 
@@ -67,7 +63,7 @@
         /// </returns>
         public int GetYearFromSpan(ReadOnlySpan<char> dateTimeString)
         {
-            var indexOfHyphen = dateTimeString.IndexOf('-');
+            int indexOfHyphen = dateTimeString.IndexOf('-');
             return int.Parse(dateTimeString.Slice(0, indexOfHyphen));
         }
 

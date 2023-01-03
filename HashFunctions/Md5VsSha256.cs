@@ -2,9 +2,7 @@
 {
     using global::BenchmarkDotNet.Attributes;
     using System;
-    using System.Collections.Generic;
     using System.Security.Cryptography;
-    using System.Text;
 
     /*******************************************************************************************************************
      * You can check several environments at once. For example, you can compare performance of Full .NET Framework, 
@@ -37,9 +35,15 @@
         }
 
         [Benchmark]
-        public byte[] Sha256() => sha256.ComputeHash(data);
+        public byte[] Sha256()
+        {
+            return sha256.ComputeHash(data);
+        }
 
         [Benchmark]
-        public byte[] Md5() => md5.ComputeHash(data);
+        public byte[] Md5()
+        {
+            return md5.ComputeHash(data);
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
     }
 
     public class BinaryTree<T> : IEnumerable<T>
-        where T: IComparable<T>
+        where T : IComparable<T>
     {
         private BinaryTreeNode<T> Root { get; set; }
 
@@ -99,8 +99,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
         public bool Contains(T value)
         {
             // defer to the node search helper function.
-            BinaryTreeNode<T> parent;
-            return FindWithParent(value, out parent) != null;
+            return FindWithParent(value, out _) != null;
         }
 
         /// <summary>
@@ -117,7 +116,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             BinaryTreeNode<T> current = Root;
             parent = null;
 
-                // while we don't have a match
+            // while we don't have a match
             while (current != null)
             {
                 int result = current.CompareTo(value);
@@ -221,7 +220,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
                 // find the right's left-most child
                 BinaryTreeNode<T> leftmost = current.Right.Left;
                 BinaryTreeNode<T> leftmostParent = current.Right;
-                
+
                 while (leftmost.Left != null)
                 {
                     leftmostParent = leftmost;
@@ -336,7 +335,7 @@ namespace Demo.BenchmarkDotNet.DataStructures
             if (Root != null)
             {
                 // store the nodes we've skipped in this stack (avoids recursion)
-                Stack<BinaryTreeNode<T>> stack = new Stack<BinaryTreeNode<T>>();
+                Stack<BinaryTreeNode<T>> stack = new();
 
                 BinaryTreeNode<T> current = Root;
 
