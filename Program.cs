@@ -1,6 +1,4 @@
-﻿using BenchmarkDotNet.Running;
-using Demo.BenchmarkDotNet.Serialization;
-using System;
+﻿using System;
 using System.Diagnostics;
 
 namespace Demo.BenchmarkDotNet
